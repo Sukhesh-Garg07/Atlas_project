@@ -210,7 +210,7 @@ def main() -> None:
         seed_pdf(args.pdf)
 
     summary()
-    print("\nDone. Open the app and follow demo/DEMO_SCRIPT.md.")
+    print("\nDone. Open the app and walk the demo from the Connectors page.")
 
 
 if __name__ == "__main__":
