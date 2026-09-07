@@ -1,0 +1,270 @@
+@import 'tailwindcss';
+@import 'tw-animate-css';
+
+@custom-variant dark (&:is(.dark *));
+
+/*
+  ATLAS // TACTICAL TELEMETRY design tokens (shadcn/ui, Tailwind v4).
+
+  Dark industrial substrate: deactivated-CRT black surfaces, white phosphor
+  type, ONE hazard-red accent reserved for primary actions and selection.
+  Monospaced typography dominates; macro headings are Archivo Black.
+  Square geometry everywhere (--radius: 0), no gradients, no soft shadows,
+  simulated scanlines over the whole console.
+*/
+:root {
+  --radius: 0rem;
+
+  --background: #0a0a0a;
+  --foreground: #eaeaea;
+
+  --card: #111111;
+  --card-foreground: #eaeaea;
+
+  --popover: #111111;
+  --popover-foreground: #eaeaea;
+
+  /* Single accent: aviation hazard red. */
+  --primary: #ff2a2a;
+  --primary-foreground: #0a0a0a;
+
+  --secondary: #1a1a1a;
+  --secondary-foreground: #eaeaea;
+
+  --muted: #161616;
+  --muted-foreground: #9c9c96;
+
+  --accent: #1a1a1a;
+  --accent-foreground: #eaeaea;
+
+  --destructive: #ff2a2a;
+  --destructive-foreground: #0a0a0a;
+
+  /* Semantic status ramp (fg = text/dot, soft = flat panel wash). */
+  --verified: #58c15c;
+  --verified-soft: rgb(88 193 92 / 0.14);
+  --review: #d9a13b;
+  --review-soft: rgb(217 161 59 / 0.14);
+  --linked: #8f7be8;
+  --linked-soft: rgb(143 123 232 / 0.14);
+  --minor: #cba84a;
+  --minor-soft: rgb(203 168 74 / 0.14);
+  --critical: #ff4a3d;
+  --critical-soft: rgb(255 74 61 / 0.16);
+
+  --success: var(--verified);
+  --success-foreground: #0a0a0a;
+  --warning: var(--review);
+  --warning-foreground: #0a0a0a;
+
+  --border: #262626;
+  --input: #3a3a3a;
+  --ring: #ff2a2a;
+
+  /* Knowledge-graph node hues (consumed by the force graph in TS too). */
+  --node-asset: #ff2a2a;
+  --node-component: #5b8dbe;
+  --node-signal: #cba84a;
+  --node-record: #58c15c;
+  --node-permit: #3fa8a0;
+  --node-person: #8f7be8;
+}
+
+.dark {
+  --background: #0a0a0a;
+  --foreground: #eaeaea;
+
+  --card: #111111;
+  --card-foreground: #eaeaea;
+
+  --popover: #111111;
+  --popover-foreground: #eaeaea;
+
+  --primary: #ff2a2a;
+  --primary-foreground: #0a0a0a;
+
+  --secondary: #1a1a1a;
+  --secondary-foreground: #eaeaea;
+
+  --muted: #161616;
+  --muted-foreground: #9c9c96;
+
+  --accent: #1a1a1a;
+  --accent-foreground: #eaeaea;
+
+  --destructive: #ff2a2a;
+  --destructive-foreground: #0a0a0a;
+
+  --verified: #58c15c;
+  --verified-soft: rgb(88 193 92 / 0.14);
+  --review: #d9a13b;
+  --review-soft: rgb(217 161 59 / 0.14);
+  --linked: #8f7be8;
+  --linked-soft: rgb(143 123 232 / 0.14);
+  --minor: #cba84a;
+  --minor-soft: rgb(203 168 74 / 0.14);
+  --critical: #ff4a3d;
+  --critical-soft: rgb(255 74 61 / 0.16);
+
+  --success: var(--verified);
+  --success-foreground: #0a0a0a;
+  --warning: var(--review);
+  --warning-foreground: #0a0a0a;
+
+  --border: #262626;
+  --input: #3a3a3a;
+  --ring: #ff2a2a;
+
+  --node-asset: #ff2a2a;
+  --node-component: #5b8dbe;
+  --node-signal: #cba84a;
+  --node-record: #58c15c;
+  --node-permit: #3fa8a0;
+  --node-person: #8f7be8;
+}
+
+@theme inline {
+  /* Mechanical rigidity: every radius collapses to zero. */
+  --radius-sm: 0rem;
+  --radius-md: 0rem;
+  --radius-lg: 0rem;
+  --radius-xl: 0rem;
+  --radius-2xl: 0rem;
+
+  --color-background: var(--background);
+  --color-foreground: var(--foreground);
+  --color-card: var(--card);
+  --color-card-foreground: var(--card-foreground);
+  --color-popover: var(--popover);
+  --color-popover-foreground: var(--popover-foreground);
+  --color-primary: var(--primary);
+  --color-primary-foreground: var(--primary-foreground);
+  --color-secondary: var(--secondary);
+  --color-secondary-foreground: var(--secondary-foreground);
+  --color-muted: var(--muted);
+  --color-muted-foreground: var(--muted-foreground);
+  --color-accent: var(--accent);
+  --color-accent-foreground: var(--accent-foreground);
+  --color-destructive: var(--destructive);
+  --color-destructive-foreground: var(--destructive-foreground);
+  --color-success: var(--success);
+  --color-success-foreground: var(--success-foreground);
+  --color-warning: var(--warning);
+  --color-warning-foreground: var(--warning-foreground);
+
+  --color-verified: var(--verified);
+  --color-verified-soft: var(--verified-soft);
+  --color-review: var(--review);
+  --color-review-soft: var(--review-soft);
+  --color-linked: var(--linked);
+  --color-linked-soft: var(--linked-soft);
+  --color-minor: var(--minor);
+  --color-minor-soft: var(--minor-soft);
+  --color-critical: var(--critical);
+  --color-critical-soft: var(--critical-soft);
+
+  --color-border: var(--border);
+  --color-input: var(--input);
+  --color-ring: var(--ring);
+
+  --font-sans:
+    'JetBrains Mono', ui-monospace, 'SF Mono', Consolas, monospace;
+  --font-mono: 'JetBrains Mono', ui-monospace, 'SF Mono', Consolas, monospace;
+  --font-display: 'Archivo Black', Impact, 'Arial Black', sans-serif;
+
+  /* Brutalism: borders carry structure, shadows carry nothing. */
+  --shadow-sm: 0 0 #0000;
+  --shadow-md: 0 0 #0000;
+  --shadow-lg: 0 0 #0000;
+  --shadow-xl: 0 0 #0000;
+  --shadow-soft: 0 0 #0000;
+  --shadow-lift: 0 0 #0000;
+
+  --ease-out-quint: cubic-bezier(0.22, 1, 0.36, 1);
+}
+
+@layer base {
+  * {
+    border-color: var(--color-border);
+  }
+
+  html {
+    -webkit-text-size-adjust: 100%;
+    scrollbar-color: #3a3a3a #0a0a0a;
+  }
+
+  body {
+    margin: 0;
+    background-color: var(--color-background);
+    color: var(--color-foreground);
+    font-family: var(--font-sans);
+    letter-spacing: 0.01em;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+    text-rendering: optimizeLegibility;
+  }
+
+  /* CRT sweep — sits above everything, never intercepts input. */
+  body::after {
+    content: '';
+    position: fixed;
+    inset: 0;
+    z-index: 9999;
+    pointer-events: none;
+    background: repeating-linear-gradient(
+      0deg,
+      transparent 0 2px,
+      rgb(0 0 0 / 0.11) 2px 4px
+    );
+  }
+
+  ::-webkit-scrollbar {
+    width: 10px;
+    height: 10px;
+    background: #0a0a0a;
+  }
+  ::-webkit-scrollbar-thumb {
+    background: #3a3a3a;
+    border: 2px solid #0a0a0a;
+  }
+  ::-webkit-scrollbar-thumb:hover {
+    background: var(--primary);
+  }
+
+  h1,
+  h2,
+  h3 {
+    text-wrap: balance;
+  }
+
+  p {
+    text-wrap: pretty;
+  }
+
+  ::selection {
+    background: var(--primary);
+    color: var(--primary-foreground);
+  }
+
+  @media (prefers-reduced-motion: reduce) {
+    *,
+    ::before,
+    ::after {
+      animation-duration: 0.01ms !important;
+      animation-iteration-count: 1 !important;
+      transition-duration: 0.01ms !important;
+      scroll-behavior: auto !important;
+    }
+  }
+}
+
+@layer components {
+  /* Hazard slab behind hero headings. */
+  .mark-accent {
+    background: var(--primary);
+    color: var(--primary-foreground);
+    padding-inline: 0.18em;
+    box-decoration-break: clone;
+    -webkit-box-decoration-break: clone;
+  }
+}
