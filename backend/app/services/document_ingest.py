@@ -19,6 +19,12 @@ Parsing and post-save work are also injectable for the same reason.
 
 from __future__ import annotations
 
+from ..aws.s3 import upload_to_s3
+from ..aws.sqs import send_pdf_job
+from ..aws.firehose import put_firehose_record
+from ..telemetry import record_ingest
+from .webhooks import fire_webhook
+
 import json
 from collections.abc import Awaitable, Callable
 from dataclasses import dataclass
